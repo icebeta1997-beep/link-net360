@@ -1,0 +1,8 @@
+# Link Net360 Technologies — FZCO
+# https://link-net360.com
+
+User-agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: https://link-net360.com/sitemap.xml

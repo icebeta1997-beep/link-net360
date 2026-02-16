@@ -1,0 +1,49 @@
+# ----------------------------------------------------------------------
+# Security Headers
+# ----------------------------------------------------------------------
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+<IfModule mod_headers.c>
+    # Protect against clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # Protect against MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Protect against XSS
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Strict Transport Security (HSTS) - 1 year
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy (limiting what browser features site can use)
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Block Access to Sensitive Files
+# ----------------------------------------------------------------------
+<FilesMatch "^\.(env|git|htaccess|htpasswd|ini|log|sh|yml|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# Static Site optimizations
+# ----------------------------------------------------------------------
+
+# Handle Next.js clean URLs (remove .html)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Custom 404
+ErrorDocument 404 /404.html

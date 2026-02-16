@@ -34,15 +34,19 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'glass-strong shadow-lg shadow-black/20'
-                    : 'bg-transparent'
+                ? 'glass-strong shadow-lg shadow-black/20'
+                : 'bg-transparent'
                 }`}
         >
             <nav className="section-container flex items-center justify-between h-20">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--primary-600)] to-[var(--accent-500)] flex items-center justify-center shadow-lg shadow-[var(--primary-600)]/30 transition-transform duration-300 group-hover:scale-110">
-                        <Zap className="w-5 h-5 text-white" />
+                    <div className="relative w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden shadow-lg shadow-[var(--primary-600)]/30 transition-transform duration-300 group-hover:scale-110">
+                        <img
+                            src="/logo.png"
+                            alt="Link Net360 Logo"
+                            className="w-full h-full object-contain p-1"
+                        />
                     </div>
                     <div className="hidden sm:block">
                         <span className="text-lg font-bold text-white leading-tight block">
@@ -63,8 +67,8 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActive
-                                        ? 'text-white'
-                                        : 'text-[var(--text-secondary)] hover:text-white'
+                                    ? 'text-white'
+                                    : 'text-[var(--text-secondary)] hover:text-white'
                                     }`}
                             >
                                 {isActive && (
@@ -119,8 +123,8 @@ export default function Navbar() {
                                         <Link
                                             href={link.href}
                                             className={`block px-4 py-3 rounded-lg text-base font-medium transition-all ${isActive
-                                                    ? 'bg-white/10 text-white'
-                                                    : 'text-[var(--text-secondary)] hover:bg-white/5 hover:text-white'
+                                                ? 'bg-white/10 text-white'
+                                                : 'text-[var(--text-secondary)] hover:bg-white/5 hover:text-white'
                                                 }`}
                                         >
                                             {link.label}

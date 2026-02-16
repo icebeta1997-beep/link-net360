@@ -32,8 +32,12 @@ export default function Footer() {
                     {/* Company */}
                     <div>
                         <Link href="/" className="flex items-center gap-3 mb-6 group">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--primary-600)] to-[var(--accent-500)] flex items-center justify-center shadow-lg shadow-[var(--primary-600)]/30">
-                                <Zap className="w-5 h-5 text-white" />
+                            <div className="relative w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden shadow-lg shadow-[var(--primary-600)]/30">
+                                <img
+                                    src="/logo.png"
+                                    alt="Link Net360 Logo"
+                                    className="w-full h-full object-contain p-1"
+                                />
                             </div>
                             <div>
                                 <span className="text-lg font-bold text-white block leading-tight">
